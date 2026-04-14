@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import pool from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import complaintRoutes from "./routes/complaintRoutes.js";
 
 dotenv.config();
 
@@ -31,6 +32,7 @@ app.get("/test-db", async (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/complaints", complaintRoutes);
 
 const PORT = process.env.PORT || 5000;
 
