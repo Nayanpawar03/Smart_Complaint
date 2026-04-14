@@ -13,11 +13,23 @@
   width: 350px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-card h2 {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: #09637E;
+}
+
+/* 🔥 FIX STARTS HERE */
+.login-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-card input {
@@ -29,6 +41,8 @@
   font-family: 'Poppins', sans-serif;
   outline: none;
   transition: 0.3s;
+
+  box-sizing: border-box; /* ✅ prevents right shift */
 }
 
 .login-card input:focus {
@@ -38,7 +52,7 @@
 .login-card button {
   width: 100%;
   padding: 12px;
-  margin-top: 10px;
+  margin-top: 12px;
   background-color: #088395;
   color: white;
   border: none;
@@ -46,6 +60,8 @@
   cursor: pointer;
   font-weight: 500;
   transition: 0.3s;
+
+  box-sizing: border-box; /* ✅ keeps alignment perfect */
 }
 
 .login-card button:hover {
@@ -56,10 +72,12 @@
   color: red;
   font-size: 14px;
   margin-top: 5px;
+  text-align: left;
+  width: 100%;
 }
 
 .switch {
-  margin-top: 15px;
+  margin-top: 18px;
   font-size: 14px;
 }
 

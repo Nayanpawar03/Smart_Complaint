@@ -56,13 +56,13 @@ const MyComplaints = () => {
                 <div className="row">
                   <span>Cluster:</span> {c.cluster_id} ({c.cluster_count})
                 </div>
-
-                <div className="row urgency">
-                  ⚡ {c.urgency}
+                
+                <div className={`row urgency ${c.urgency.toLowerCase()}`}>
+                  <span>Urgency:</span> {c.urgency}
                 </div>
 
-                <div className="status">
-                  {c.status}
+                <div className="row status">
+                  <span>Status:</span> {c.status}
                 </div>
 
                 {c.image_url && (

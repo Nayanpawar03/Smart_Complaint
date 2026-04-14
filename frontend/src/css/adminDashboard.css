@@ -1,5 +1,5 @@
 .admin-container {
-  padding: 30px;
+  padding: 40px 30px;
   background: #EBF4F6;
   min-height: 100vh;
 }
@@ -7,87 +7,135 @@
 .admin-container h2 {
   text-align: center;
   color: #09637E;
+  margin-bottom: 40px;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 /* GRID */
 .grid {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 /* CARD */
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 16px;
+  padding: 22px;
+  border-radius: 18px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.25s ease;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px);
+  box-shadow: 0px 15px 35px rgba(0,0,0,0.12);
 }
 
 /* TITLE */
 .title {
   font-weight: 600;
+  font-size: 15px;
+  color: #222;
+  line-height: 1.4;
 }
 
 /* META */
 .meta {
-  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
 }
 
-/* URGENCY */
+/* 🔥 URGENCY BADGE */
 .urgency {
-  margin-top: 10px;
-  padding: 5px;
-  border-radius: 8px;
-  color: white;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
   width: fit-content;
 }
 
 .high {
-  background: red;
+  background: #ff4d4d;
+  color: white;
 }
 
 .medium {
-  background: orange;
+  background: #FFD166;
+  color: #333;
 }
 
 .low {
-  background: green;
+  background: #28a745;
+  color: white;
 }
 
-/* STATUS */
+/* 🔥 STATUS PILL */
 .status {
   margin-top: 10px;
+  box-sizing: border-box;
+  padding: 8px 14px;
+  border-radius: 20px;
   font-size: 13px;
-  color: #555;
+  background: #b9fbfc;
+  color: black;
+  width: 100%;
+  text-align: center;
 }
 
-/* MODAL */
+/* MODAL OVERLAY */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.45);
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(3px); /* 🔥 premium effect */
+  z-index: 1000;
 }
 
+/* MODAL BOX */
 .modal {
   background: white;
   padding: 30px;
-  border-radius: 16px;
-  width: 500px;
+  border-radius: 20px;
+  width: 520px;
+  max-width: 90%;
+  box-shadow: 0px 20px 50px rgba(0,0,0,0.2);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 0.25s ease;
 }
 
-/* IMAGES */
+/* MODAL TITLE */
+.modal h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* MODAL TEXT */
+.modal p {
+  font-size: 14px;
+  color: #444;
+}
+
+/* IMAGE GRID */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -97,45 +145,59 @@
 
 .image-grid img {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-/* BUTTON */
-.resolve-btn {
-  margin-top: 20px;
-  background: #088395;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
+/* BUTTON GROUP */
 .button-group {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
 }
 
-/* IN PROGRESS */
+/* IN PROGRESS BUTTON */
 .progress-btn {
   flex: 1;
-  background: orange;
+  background: #FFA500;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-/* RESOLVE */
+.progress-btn:hover {
+  background: #e69500;
+}
+
+/* RESOLVE BUTTON */
 .resolve-btn {
   flex: 1;
   background: #088395;
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.resolve-btn:hover {
+  background: #066a73;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

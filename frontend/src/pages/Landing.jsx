@@ -16,7 +16,10 @@ const Landing = () => {
 
       {/* 🔹 NAVBAR */}
       <div className="navbar">
-        <div className="logo">Smart Complaint System</div>
+        <div className="logo">
+          <img src="/logo.png" alt="logo" />
+          <span>Smart Complaint System</span>
+        </div>
         <div className="nav-buttons">
           <button className="login-btn" onClick={() => navigate("/login")}>
             Login
@@ -45,7 +48,9 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="hero-right"></div>
+        <div className="hero-right">
+          <img src="/cover.png" alt="cover" />
+        </div>
       </div>
 
       {/* 🔹 FEATURES */}
