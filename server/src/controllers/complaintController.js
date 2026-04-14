@@ -16,8 +16,8 @@ export const createComplaint = async (req, res) => {
         let uploaded_image_url = image_url || null;
 
         console.log("USER:", req.user);
-console.log("BODY:", req.body);
-console.log("FILE:", req.file);
+        console.log("BODY:", req.body);
+        console.log("FILE:", req.file);
 
         if (req.file) {
             const streamUpload = () =>
@@ -63,7 +63,7 @@ console.log("FILE:", req.file);
             (user_id, description, department, duration, affected_count, cluster_id, cluster_count, urgency, image_url, status)
             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'pending')
             RETURNING *`,
-            [user_id, description, category, duration, affected_count, cluster_id, cluster_count, urgency, uploaded_image_url]
+            [user_id, description, department, duration, affected_count, cluster_id, cluster_count, urgency, uploaded_image_url]
         );
 
         res.status(201).json({

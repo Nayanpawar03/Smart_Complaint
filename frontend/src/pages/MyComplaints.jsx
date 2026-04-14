@@ -7,7 +7,7 @@ import { getAllComplaints } from "../services/complaint";
 const MyComplaints = () => {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
     fetchComplaints();
   }, []);
@@ -22,61 +22,90 @@ const MyComplaints = () => {
     setLoading(false);
   };
 
-  return (
-    <>
-      <Navbar />
+return (
+  <>
+    <Navbar />
 
-      <div className="my-complaints-container">
-        <h2>My Complaints</h2>
+    <div className="my-complaints-container">
+      <h2>My Complaints</h2>
 
-        {loading ? (
-          <p>Loading...</p>
-        ) : complaints.length === 0 ? (
-          <p>No complaints found</p>
-        ) : (
-          <div className="complaints-grid">
+      {loading ? (
+        <p>Loading...</p>
+      ) : complaints.length === 0 ? (
+        <p>No complaints found</p>
+      ) : (
+        <div className="complaints-grid">
 
-            {complaints.map((c) => (
-              <div className="complaint-card" key={c.id}>
+          {complaints.map((c) => (
+            <div className="complaint-card" key={c.id}>
 
-                <p className="desc">{c.description}</p>
+              <p className="desc">{c.description}</p>
 
-                <div className="row">
-                  <span>Department:</span> {c.department}
-                </div>
-
-                <div className="row">
-                  <span>Duration:</span> {c.duration} days
-                </div>
-
-                <div className="row">
-                  <span>Affected:</span> {c.affected_count}
-                </div>
-
-                <div className="row">
-                  <span>Cluster:</span> {c.cluster_id} ({c.cluster_count})
-                </div>
-                
-                <div className={`row urgency ${c.urgency.toLowerCase()}`}>
-                  <span>Urgency:</span> {c.urgency}
-                </div>
-
-                <div className="row status">
-                  <span>Status:</span> {c.status}
-                </div>
-
-                {c.image_url && (
-                  <img src={c.image_url} alt="complaint" />
-                )}
-
+              <div className="row">
+                <span>Department:</span> {c.department}
               </div>
-            ))}
 
-          </div>
-        )}
-      </div>
-    </>
-  );
+              <div className="row">
+                <span>Duration:</span> {c.duration} days
+              </div>
+
+              <div className="row">
+                <span>Affected:</span> {c.affected_count}
+              </div>
+
+              <div className="row">
+                <span>Cluster:</span> {c.cluster_id} ({c.cluster_count})
+              </div>
+              
+              <div className={`row urgency ${c.urgency.toLowerCase()}`}>
+                <span>Urgency:</span> {c.urgency}
+              </div>
+
+              <div className="row status">
+                <span>Status:</span> {c.status}
+              </div>
+
+              {c.image_url && (
+                <button
+                  className="view-image-btn"
+                  onClick={() => setSelectedImage(c.image_url)}
+                >
+                  View Image
+                </button>
+              )}
+
+            </div>
+          ))}
+
+        </div>
+      )}
+
+      {/* 🔥 IMAGE MODAL */}
+      {selectedImage && (
+        <div
+          className="image-modal"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* ❌ prevent closing when clicking image */}
+          <img
+            src={selectedImage}
+            alt="preview"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* ✅ close button */}
+          <span
+            className="close-btn"
+            onClick={() => setSelectedImage(null)}
+          >
+            ✖
+          </span>
+        </div>
+      )}
+
+    </div>
+  </>
+);
 };
 
 export default MyComplaints;
