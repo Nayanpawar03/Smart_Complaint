@@ -52,6 +52,18 @@ CRITICAL_WORDS = ["ragging","harassment","abuse","molest","assault","fight","vio
 HIGH_WORDS = ["not working","broken","electricity","power cut","water issue","leakage","fire","damage","server down","network down","internet down"]
 MEDIUM_WORDS = ["wifi","slow","lag","delay","issue","bad service","dirty","cleanliness"]
 
+CATEGORY_MAP = {
+    "Technical Issues": "Technical Issues",
+    "Technical": "Technical Issues",
+    "Mess/Food": "Mess/Food",
+    "Mess": "Mess/Food",
+    "Infrastructure": "Infrastructure",
+    "Academics": "Academics",
+    "Cleanliness": "Cleanliness",
+    "Ragging": "Ragging",
+    "Other": "Other"
+}
+
 def get_severity_score(text):
     if any(w in text for w in CRITICAL_WORDS): return 3 * 1.5
     elif any(w in text for w in HIGH_WORDS): return 2 * 1.5
@@ -68,7 +80,8 @@ def get_urgency(complaint_text, category, duration, affected_count, cluster_coun
     if severity_score >= 3.0: return "Medium"
 
     text_features = vectorizer.transform([complaint_text])
-    cat_encoded = category_encoder.transform([category])[0]
+    normalized_category = CATEGORY_MAP.get(category.strip(), "Other")
+    cat_encoded = category_encoder.transform([normalized_category])[0]
     dur_encoded = encode_duration(duration)
     aff_encoded = encode_affected(affected_count)
     cluster_log = math.log(cluster_count + 1)

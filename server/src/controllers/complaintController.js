@@ -25,6 +25,13 @@ export const createComplaint = async (req, res) => {
             [cluster_count, cluster_id]
         );
 
+        const DEPARTMENT_MAP = {
+            "Technical": "Technical Issues",
+            "Mess": "Mess/Food"
+        };
+        const department = DEPARTMENT_MAP[category] || category;
+
+
         // Insert new complaint
         const result = await pool.query(
             `INSERT INTO complaints 
