@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #EBF4F6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
