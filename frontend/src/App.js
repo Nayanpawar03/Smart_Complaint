@@ -6,6 +6,7 @@ import StudentDashboard from "./pages/StudentDashboard";
 import AddComplaint from "./pages/AddComplaint";
 import MyComplaints from "./pages/MyComplaints";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -41,6 +42,15 @@ function App() {
           element={
             <ProtectedRoute>
               <MyComplaints />
+            </ProtectedRoute>
+          }
+        />
+
+         <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
             </ProtectedRoute>
           }
         />

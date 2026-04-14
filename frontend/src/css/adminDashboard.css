@@ -1,0 +1,141 @@
+.admin-container {
+  padding: 30px;
+  background: #EBF4F6;
+  min-height: 100vh;
+}
+
+.admin-container h2 {
+  text-align: center;
+  color: #09637E;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* TITLE */
+.title {
+  font-weight: 600;
+}
+
+/* META */
+.meta {
+  margin-top: 10px;
+}
+
+/* URGENCY */
+.urgency {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 8px;
+  color: white;
+  width: fit-content;
+}
+
+.high {
+  background: red;
+}
+
+.medium {
+  background: orange;
+}
+
+.low {
+  background: green;
+}
+
+/* STATUS */
+.status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 500px;
+}
+
+/* IMAGES */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.image-grid img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* BUTTON */
+.resolve-btn {
+  margin-top: 20px;
+  background: #088395;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* IN PROGRESS */
+.progress-btn {
+  flex: 1;
+  background: orange;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* RESOLVE */
+.resolve-btn {
+  flex: 1;
+  background: #088395;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
