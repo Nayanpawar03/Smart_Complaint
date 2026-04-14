@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+gradio_client
+joblib
+xgboost
+scikit-learn
+sentence-transformers
+pandas
+scipy
+numpy
