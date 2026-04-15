@@ -12,18 +12,29 @@
   width: 420px;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .complaint-card h2 {
   text-align: center;
   color: #09637E;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+/* FORM STRUCTURE */
+.complaint-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* LABEL */
 .complaint-card label {
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: 500;
   color: #333;
 }
@@ -31,12 +42,20 @@
 /* TEXTAREA */
 .complaint-card textarea {
   width: 100%;
-  height: 100px;
+  height: 110px;
   padding: 12px;
-  margin-top: 5px;
+  margin-top: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-family: 'Poppins', sans-serif;
+  outline: none;
+
+  box-sizing: border-box; /* 🔥 FIX */
+  resize: none;
+}
+
+.complaint-card textarea:focus {
+  border-color: #088395;
 }
 
 /* SELECT + INPUT */
@@ -44,9 +63,24 @@
 .complaint-card input {
   width: 100%;
   padding: 12px;
-  margin-top: 5px;
+  margin-top: 6px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  outline: none;
+
+  box-sizing: border-box; /* 🔥 FIX */
+}
+
+.complaint-card select:focus,
+.complaint-card input:focus {
+  border-color: #088395;
+}
+
+/* FILE INPUT FIX */
+.complaint-card input[type="file"] {
+  padding: 10px;
+  background: white;
+  cursor: pointer;
 }
 
 /* BUTTON */
@@ -59,14 +93,21 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
+
+  box-sizing: border-box; /* 🔥 keeps alignment */
+  transition: 0.3s;
 }
 
 .complaint-card button:hover {
   background-color: #066a73;
 }
 
+/* MESSAGE */
 .message {
   margin-top: 10px;
   color: green;
   font-size: 14px;
+  text-align: left;
+  width: 100%;
 }

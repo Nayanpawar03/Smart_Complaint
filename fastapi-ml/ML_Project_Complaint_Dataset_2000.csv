@@ -2021,7 +2021,7 @@ grading criteria transparent nahi hai,Academics,High,Today,20+,synthetic,,,
 The food in the mess is very bad,Mess/Food,,,,,1.0,4.0,1.0
 food in the mess is very bad,Mess/Food,,,,,1.0,4.0,1.0
 Mess food quality is terrible today,Mess/Food,,,,,1.0,4.0,1.0
-AC is not working in labs,Infrastructure,,,,,2.0,1.0,2.0
+AC is not working in labs,Infrastructure,,,,,2.0,2.0,2.0
 Washroom should be clean there's no clean washrooms in the college,Cleanliness,,,,,3.0,5.0,3.0
 Washroom should be clean there's no clean washrooms in the college,Cleanliness,,,,,3.0,5.0,3.0
 Washroom should be clean there's no clean washrooms in the college,Cleanliness,,,,,3.0,5.0,3.0
@@ -2049,3 +2049,4 @@ Washroom is very dirty,Cleanliness,,,,,3.0,5.0,3.0
 The teachers do not teach nicely,Academics,,,,,7.0,2.0,7.0
 "The mess food is soo bad, there's stinky chawli ki sabzi",Mess/Food,,,,,1.0,4.0,1.0
 wifi is not working,Technical,,,,,8.0,1.0,8.0
+ac is not working in lab,Infrastructure,,,,,2.0,2.0,2.0

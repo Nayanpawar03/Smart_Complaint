@@ -17,6 +17,7 @@ import warnings
 
 import numpy as np
 import pandas as pd
+from db import get_connection
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -366,15 +367,43 @@ def build_issue_groups(clusters: list, issue_threshold: float = 0.60) -> dict:
 # ================================================================
 
 def load_dataset(path: str = DATASET_PATH) -> pd.DataFrame:
-    df = pd.read_csv(path)
+    conn = get_connection()
+    df = pd.read_sql(
+        "SELECT id, description AS complaint_text, cluster_id, cluster_count, department AS category FROM complaints",
+        conn
+    )
+    conn.close()
     for col in ["cluster_id", "cluster_count", "issue_id"]:
         if col not in df.columns:
             df[col] = pd.NA
     return df
 
 
+
 def save_dataset(df: pd.DataFrame, path: str = DATASET_PATH) -> None:
-    df.to_csv(path, index=False)
+    if df.empty:
+        return
+
+    conn = get_connection()
+    cur = conn.cursor()
+
+    for _, row in df.iterrows():
+        if pd.isna(row.get("cluster_id")):
+            continue
+
+        cluster_id = int(row["cluster_id"]) if pd.notna(row["cluster_id"]) else -1
+        cluster_count = int(row["cluster_count"]) if pd.notna(row["cluster_count"]) else 0
+
+        cur.execute(
+            """UPDATE complaints 
+               SET cluster_id = %s, cluster_count = %s
+               WHERE description = %s""",
+            (cluster_id, cluster_count, row.get("complaint_text", ""))
+        )
+
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
 def sync_counts(df: pd.DataFrame, clusters: list) -> pd.DataFrame:

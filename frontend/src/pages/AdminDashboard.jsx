@@ -56,7 +56,7 @@ const handleStatusChange = async (status) => {
       <Navbar />
 
       <div className="admin-container">
-        <h2>Admin Dashboard</h2>
+        <h2>Student Complaints</h2>
 
         <div className="grid">
           {complaints.map((c) => (
@@ -72,10 +72,10 @@ const handleStatusChange = async (status) => {
               </div>
 
               <div className={`urgency ${getUrgencyClass(c.urgency)}`}>
-                {c.urgency}
+                <span>Urgency : </span>{c.urgency}
               </div>
 
-              <div className="status">{c.status}</div>
+              <div className="status"><span>Status : </span>{c.status}</div>
             </div>
           ))}
         </div>
